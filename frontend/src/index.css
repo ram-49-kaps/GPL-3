@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ─── */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: #060b14;
+    color: #f5f0e8;
+    overflow-x: hidden;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(212, 160, 23, 0.3);
+    color: #f5c542;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060b14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #d4a017, #a67c00);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f5c542;
+  }
+
+  /* Mobile font scaling */
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  @media (min-width: 641px) and (max-width: 1024px) {
+    html {
+      font-size: 15px;
+    }
+  }
+}
+
+/* ─── Component Utilities ─── */
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    background: linear-gradient(145deg, rgba(13, 21, 32, 0.85), rgba(17, 29, 46, 0.6));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 160, 23, 0.12);
+    border-radius: 1rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(212, 160, 23, 0.3);
+    box-shadow: 0 8px 40px rgba(212, 160, 23, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Gold Gradient Text */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #d4a017, #f5c542, #d4a017);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-fire {
+    background: linear-gradient(135deg, #e8650a, #f5c542);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gold Border Glow */
+  .border-gold-glow {
+    border: 1px solid rgba(212, 160, 23, 0.3);
+    box-shadow: 0 0 15px rgba(212, 160, 23, 0.1), inset 0 1px 0 rgba(212, 160, 23, 0.1);
+  }
+
+  /* Input Field Styles */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl bg-midnight-200/60 border border-midnight-300/50 
+    text-cream placeholder-ash/50 font-body text-sm
+    focus:outline-none focus:border-gold/50 focus:ring-1 focus:ring-gold/20 
+    transition-all duration-300;
+  }
+
+  .input-field:focus {
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.08);
+  }
+
+  .input-label {
+    @apply block text-xs font-display font-semibold text-gold/80 uppercase tracking-wider mb-1.5;
+  }
+
+  .input-error {
+    @apply text-crimson text-xs mt-1 font-body;
+  }
+
+  /* Radio Card */
+  .radio-card {
+    @apply relative flex items-center gap-2 px-4 py-3 rounded-xl cursor-pointer
+    bg-midnight-200/40 border border-midnight-300/40
+    transition-all duration-300 select-none;
+  }
+  .radio-card:hover {
+    @apply border-gold/30 bg-midnight-200/70;
+  }
+  .radio-card.active {
+    @apply border-gold/60 bg-gold/10;
+    box-shadow: 0 0 20px rgba(212, 160, 23, 0.1);
+  }
+
+  /* Button Styles */
+  .btn-gold {
+    @apply relative px-8 py-3.5 rounded-xl font-display font-bold text-lg tracking-wider uppercase
+    overflow-hidden transition-all duration-300;
+    background: linear-gradient(135deg, #d4a017, #f5c542, #d4a017);
+    background-size: 200% 200%;
+    color: #060b14;
+    box-shadow: 0 4px 20px rgba(212, 160, 23, 0.3);
+  }
+  .btn-gold:hover {
+    background-position: 100% 0;
+    box-shadow: 0 6px 30px rgba(212, 160, 23, 0.5);
+    transform: translateY(-1px);
+  }
+  .btn-gold:active {
+    transform: translateY(0);
+  }
+  .btn-gold:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Stadium Background Effect */
+  .stadium-bg {
+    position: relative;
+  }
+  .stadium-bg::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(212, 160, 23, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 20% 50%, rgba(15, 40, 71, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 50%, rgba(15, 40, 71, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 50% 30% at 50% 100%, rgba(232, 101, 10, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Section Divider */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.3), transparent);
+  }
+
+  /* Noise Texture Overlay */
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Carousel */
+  .carousel-container {
+    @apply relative overflow-hidden rounded-2xl;
+  }
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .carousel-slide {
+    min-width: 100%;
+    @apply relative;
+  }
+
+  /* Photo Upload Area */
+  .upload-zone {
+    @apply relative flex flex-col items-center justify-center gap-2 p-6 
+    rounded-xl border-2 border-dashed border-midnight-300/60 
+    bg-midnight-200/30 cursor-pointer transition-all duration-300;
+  }
+  .upload-zone:hover {
+    @apply border-gold/40 bg-gold/5;
+  }
+  .upload-zone.has-file {
+    @apply border-gold/50 bg-gold/5;
+  }
+}
+
+/* ─── Custom Animations ─── */
+@layer utilities {
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
+  .animation-delay-1000 { animation-delay: 1000ms; }
+  .animation-delay-1200 { animation-delay: 1200ms; }
+  .animation-delay-1500 { animation-delay: 1500ms; }
+  .animation-delay-2000 { animation-delay: 2000ms; }
+}
+
+/* ─── Splash Screen Specific ─── */
+.splash-container {
+  background: 
+    radial-gradient(ellipse 100% 60% at 50% 40%, rgba(212, 160, 23, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 30% 70%, rgba(15, 40, 71, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 70% 30%, rgba(15, 40, 71, 0.2) 0%, transparent 40%),
+    #060b14;
+}
+
+.splash-x {
+  text-shadow: 0 0 30px rgba(212, 160, 23, 0.6), 0 0 60px rgba(212, 160, 23, 0.3);
+}
+
+/* ─── Success Check Animation ─── */
+@keyframes checkDraw {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+.success-check path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: checkDraw 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes successCircle {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.success-circle {
+  animation: successCircle 0.5s ease-out forwards;
+}
+
+/* ─── Gallery Hover Effects ─── */
+.gallery-item {
+  @apply relative overflow-hidden rounded-xl;
+}
+.gallery-item::after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-t from-midnight/90 via-transparent to-transparent 
+  opacity-60 transition-opacity duration-300;
+}
+.gallery-item:hover::after {
+  @apply opacity-40;
+}
+.gallery-item img {
+  @apply transition-transform duration-500;
+}
+.gallery-item:hover img {
+  @apply scale-110;
+}
