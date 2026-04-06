@@ -62,7 +62,7 @@ const registerPlayer = async (req, res) => {
       phone,
       player_type,
       payment_method,
-    }).catch(err => console.error('Email error:', err.message));
+    }).catch(err => console.error('🔥 Email Send Error:', err));
 
     // Response
     res.status(201).json({

@@ -8,6 +8,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Verify connection configuration on startup
+transporter.verify(function (error, success) {
+  if (error) {
+    console.error('❌ Email Verification Error:', error.message);
+  } else {
+    console.log('✅ Email server is ready to take our messages');
+  }
+});
+
 const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_method }) => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     console.warn('⚠️  Email not configured. Skipping confirmation email.');
