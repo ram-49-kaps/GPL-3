@@ -1,28 +1,10 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true, // Use SSL
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 10000, // 10 seconds
-});
-
-// Verify connection configuration on startup
-transporter.verify(function (error, success) {
-  if (error) {
-    console.error('❌ Email Verification Error:', error.message);
-  } else {
-    console.log('✅ Email server is ready to take our messages');
-  }
-});
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_method }) => {
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.warn('⚠️  Email not configured. Skipping confirmation email.');
+  if (!resend) {
+    console.warn('⚠️  Resend API key not configured. Skipping confirmation email.');
     return;
   }
 
@@ -100,15 +82,24 @@ const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_
   </html>
   `;
 
-  const mailOptions = {
-    from: `"GPL-3 Registration" <${process.env.EMAIL_USER}>`,
-    to: email,
-    subject: '🏏 GPL-3 Registration Confirmed — Ganadhishay Premier League Season 3',
-    html: htmlTemplate,
-  };
+  try {
+    const { data, error } = await resend.emails.send({
+      from: 'GPL-3 <onboarding@resend.dev>',
+      to: email,
+      subject: '🏏 GPL-3 Registration Confirmed',
+      html: htmlTemplate,
+    });
 
-  await transporter.sendMail(mailOptions);
-  console.log(`✉️  Confirmation email sent to ${email}`);
+    if (error) {
+      console.error('🔥 Resend Error:', error);
+    } else {
+      console.log(`✉️  Confirmation email sent to ${email}`);
+    }
+  } catch (err) {
+    console.error('🔥 Email Send Error:', err);
+  }
 };
+
+module.exports = { sendConfirmationEmail };
 
 module.exports = { sendConfirmationEmail };
