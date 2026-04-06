@@ -208,9 +208,9 @@ const RegistrationForm = ({ onSuccess }) => {
             {errors.phone && <p className="input-error">{errors.phone}</p>}
           </div>
 
-          {/* Playing in 2025 */}
+          {/* Playing in 2026 */}
           <div>
-            <label className="input-label">Are you playing in 2025?</label>
+            <label className="input-label">Are you playing in 2026?</label>
             <div className="flex gap-3">
               {['Yes', 'No'].map((opt) => (
                 <button

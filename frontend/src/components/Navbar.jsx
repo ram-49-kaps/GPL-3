@@ -44,7 +44,7 @@ const Navbar = () => {
         {/* Season Badge */}
         <div className="flex items-center gap-2">
           <span className="px-2.5 py-1 sm:px-3 sm:py-1 rounded-full bg-gold/10 border border-gold/20 text-gold font-accent text-[10px] sm:text-xs tracking-wider">
-            SEASON 3 • 2025
+            SEASON 3 • 2026
           </span>
         </div>
       </div>

@@ -73,7 +73,7 @@ const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_
 
       <!-- Footer -->
       <div style="text-align:center;padding:20px;background:#0d1520;border-radius:0 0 16px 16px;border:1px solid rgba(212,160,23,0.1);border-top:none;">
-        <p style="color:#7a8599;font-size:11px;margin:0;">© 2025 Ganadhishay Premier League</p>
+        <p style="color:#7a8599;font-size:11px;margin:0;">© 2026 Ganadhishay Premier League</p>
         <p style="color:#7a8599;font-size:10px;margin:4px 0 0;opacity:0.6;">Box Cricket Tournament • Season 3</p>
       </div>
 

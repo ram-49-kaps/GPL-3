@@ -75,7 +75,7 @@ function App() {
               <span className="h-px w-6 sm:w-10 bg-gradient-to-l from-transparent to-gold/50" />
             </div>
             <p className="text-ash text-xs sm:text-sm md:text-base font-body tracking-wide mt-2 sm:mt-3 animate-fade-in animation-delay-500">
-              Box Cricket Tournament • Registration 2025
+              Box Cricket Tournament • Registration 2026
             </p>
 
             {/* CTA Badge */}
@@ -120,7 +120,7 @@ function App() {
               <span className="font-display font-bold text-sm text-gold/60">GPL-3</span>
             </div>
             <p className="text-ash/50 text-[10px] sm:text-xs font-body">
-              © 2025 Ganadhishay Premier League. All rights reserved.
+              © 2026 Ganadhishay Premier League. All rights reserved.
             </p>
             <p className="text-ash/30 text-[9px] sm:text-[10px] font-body mt-1">
               Mandal Ganesh Utsav • Box Cricket Tournament Season 3
