@@ -214,7 +214,7 @@ const RegistrationForm = ({ onSuccess }) => {
 
           {/* Playing in 2026 */}
           <div>
-            <label className="input-label">Are you playing in 2025?</label>
+            <label className="input-label">Have you played in 2025?</label>
             <div className="flex gap-3">
               {['Yes', 'No'].map((opt) => (
                 <button
