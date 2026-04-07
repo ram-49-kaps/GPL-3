@@ -238,7 +238,7 @@ const RegistrationForm = ({ onSuccess }) => {
 
           {/* Mandal Token 2026 */}
           <div>
-            <label className="input-label">Have you paid Mandal Token amount of 2026?</label>
+            <label className="input-label">Have you paid Mandal Token amount?</label>
             <div className="flex gap-3">
               {['Yes', 'No'].map((opt) => (
                 <button
