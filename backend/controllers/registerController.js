@@ -3,7 +3,7 @@ const { sendConfirmationEmail } = require('../utils/emailService');
 
 const registerPlayer = async (req, res) => {
   try {
-    const { name, email, phone, playing_2025, player_type, payment_method } = req.body;
+    const { name, email, phone, playing_2025, mandal_token_2026, player_type, payment_method } = req.body;
 
     // Validation
     if (!name || name.trim().length < 2) {
@@ -17,6 +17,9 @@ const registerPlayer = async (req, res) => {
     }
     if (!['Yes', 'No'].includes(playing_2025)) {
       return res.status(400).json({ message: 'Playing status is required' });
+    }
+    if (!['Yes', 'No'].includes(mandal_token_2026)) {
+      return res.status(400).json({ message: 'Mandal token status is required' });
     }
     if (!['Batsman', 'Bowler', 'All Rounder'].includes(player_type)) {
       return res.status(400).json({ message: 'Valid player type is required' });
@@ -37,6 +40,7 @@ const registerPlayer = async (req, res) => {
           email: email.trim().toLowerCase(),
           phone,
           playing_2025,
+          mandal_token_2026,
           photo_path,
           player_type,
           payment_method,
@@ -51,7 +55,7 @@ const registerPlayer = async (req, res) => {
       dbRecord = data;
     } else {
       // Fallback: just log if Supabase not configured
-      dbRecord = { id: Date.now(), name, email, phone, playing_2025, photo_path, player_type, payment_method };
+      dbRecord = { id: Date.now(), name, email, phone, playing_2025, mandal_token_2026, photo_path, player_type, payment_method };
       console.log('📝 Registration (no DB):', dbRecord);
     }
 
@@ -70,6 +74,7 @@ const registerPlayer = async (req, res) => {
       name: name.trim(),
       email: email.trim().toLowerCase(),
       phone,
+      mandal_token_2026,
       player_type,
       payment_method,
       id: dbRecord?.id,

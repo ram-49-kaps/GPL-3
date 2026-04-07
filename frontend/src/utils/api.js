@@ -13,6 +13,7 @@ export const submitRegistration = async (formData) => {
   data.append('email', formData.email);
   data.append('phone', formData.phone);
   data.append('playing_2025', formData.playing_2025);
+  data.append('mandal_token_2026', formData.mandal_token_2026);
   data.append('player_type', formData.player_type);
   data.append('payment_method', formData.payment_method);
   

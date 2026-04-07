@@ -13,6 +13,7 @@ const RegistrationForm = ({ onSuccess }) => {
     email: '',
     phone: '',
     playing_2025: '',
+    mandal_token_2026: '',
     photo: null,
     player_type: '',
     payment_method: '',
@@ -31,6 +32,9 @@ const RegistrationForm = ({ onSuccess }) => {
     }
     if (!form.playing_2025) {
       newErrors.playing_2025 = 'Please select an option';
+    }
+    if (!form.mandal_token_2026) {
+      newErrors.mandal_token_2026 = 'Please select an option';
     }
     if (!form.player_type) {
       newErrors.player_type = 'Please select your player type';
@@ -230,6 +234,31 @@ const RegistrationForm = ({ onSuccess }) => {
               ))}
             </div>
             {errors.playing_2025 && <p className="input-error">{errors.playing_2025}</p>}
+          </div>
+
+          {/* Mandal Token 2026 */}
+          <div>
+            <label className="input-label">Have you paid Mandal Token amount of 2026?</label>
+            <div className="flex gap-3">
+              {['Yes', 'No'].map((opt) => (
+                <button
+                  key={opt}
+                  type="button"
+                  className={`radio-card flex-1 justify-center ${form.mandal_token_2026 === opt ? 'active' : ''}`}
+                  onClick={() => handleChange('mandal_token_2026', opt)}
+                >
+                  <span className={`w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
+                    form.mandal_token_2026 === opt ? 'border-gold bg-gold' : 'border-ash/40'
+                  }`}>
+                    {form.mandal_token_2026 === opt && <span className="w-1.5 h-1.5 rounded-full bg-midnight" />}
+                  </span>
+                  <span className={`font-body text-sm ${form.mandal_token_2026 === opt ? 'text-cream' : 'text-ash'}`}>
+                    {opt}
+                  </span>
+                </button>
+              ))}
+            </div>
+            {errors.mandal_token_2026 && <p className="input-error">{errors.mandal_token_2026}</p>}
           </div>
 
           {/* Photo Upload */}
