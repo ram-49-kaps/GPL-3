@@ -41,6 +41,11 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // API Routes
 app.use('/api', registerRoutes);
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({ message: '🏏 GPL-3 Backend API is Live!' });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'GPL-3 API is running' });
