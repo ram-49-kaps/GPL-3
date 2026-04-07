@@ -1,10 +1,10 @@
-const { Resend } = require('resend');
-
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const axios = require('axios');
 
 const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_method }) => {
-  if (!resend) {
-    console.warn('⚠️  Resend API key not configured. Skipping confirmation email.');
+  const BREVO_API_KEY = process.env.BREVO_API_KEY;
+
+  if (!BREVO_API_KEY) {
+    console.warn('⚠️  Brevo API key not configured. Skipping confirmation email.');
     return;
   }
 
@@ -83,23 +83,22 @@ const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_
   `;
 
   try {
-    const { data, error } = await resend.emails.send({
-      from: 'GPL-3 <onboarding@resend.dev>',
-      to: email,
+    const response = await axios.post('https://api.brevo.com/v3/smtp/email', {
+      sender: { name: 'GPL-3 Registration', email: 'ganadhishay11@gmail.com' },
+      to: [{ email }],
       subject: '🏏 GPL-3 Registration Confirmed',
-      html: htmlTemplate,
+      htmlContent: htmlTemplate,
+    }, {
+      headers: {
+        'api-key': BREVO_API_KEY,
+        'Content-Type': 'application/json',
+      },
     });
 
-    if (error) {
-      console.error('🔥 Resend Error:', error);
-    } else {
-      console.log(`✉️  Confirmation email sent to ${email}`);
-    }
+    console.log(`✉️  Confirmation email sent to ${email} via Brevo`);
   } catch (err) {
-    console.error('🔥 Email Send Error:', err);
+    console.error('🔥 Brevo Email Error:', err.response?.data || err.message);
   }
 };
-
-module.exports = { sendConfirmationEmail };
 
 module.exports = { sendConfirmationEmail };
