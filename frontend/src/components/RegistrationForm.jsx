@@ -354,14 +354,14 @@ const RegistrationForm = ({ onSuccess }) => {
           </div>
 
           {/* Payment Section */}
-          <PaymentSection method={form.payment_method} totalAmount={form.mandal_token_2026 === 'No' ? 2500 : 500} />
+          <PaymentSection method={form.payment_method} totalAmount={form.mandal_token_2026 === 'No' ? 3000 : 1000} />
 
           {/* Registration Fee Info */}
           <div className="p-3 sm:p-4 rounded-xl bg-midnight-200/50 border border-midnight-300/30 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-ash text-xs sm:text-sm font-body">GPL Registration Fee</span>
               <span className="text-cream font-accent text-base sm:text-lg">
-                ₹500
+                ₹1,000
               </span>
             </div>
             {form.mandal_token_2026 === 'No' && (
@@ -373,7 +373,7 @@ const RegistrationForm = ({ onSuccess }) => {
             <div className="border-t border-ash/10 pt-2 flex items-center justify-between">
               <span className="text-cream text-xs sm:text-sm font-body font-semibold">Total</span>
               <span className="text-gold font-accent text-xl sm:text-2xl">
-                ₹{form.mandal_token_2026 === 'No' ? '2,500' : '500'}
+                ₹{form.mandal_token_2026 === 'No' ? '3,000' : '1,000'}
               </span>
             </div>
           </div>

@@ -1,7 +1,7 @@
 const PaymentSection = ({ method, totalAmount }) => {
   if (!method) return null;
 
-  const amount = totalAmount || 500;
+  const amount = totalAmount || 1000;
   const displayAmount = `₹${amount.toLocaleString('en-IN')}`;
   
   // Dynamic UPI QR code with pre-filled amount

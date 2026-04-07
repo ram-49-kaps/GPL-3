@@ -56,17 +56,17 @@ const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_
             </tr>
             <tr>
               <td style="color:#7a8599;font-size:13px;padding:10px 0;">Payment</td>
-              <td style="color:#f5f0e8;font-size:13px;padding:10px 0;text-align:right;font-weight:600;">${payment_method} — ₹500</td>
+              <td style="color:#f5f0e8;font-size:13px;padding:10px 0;text-align:right;font-weight:600;">${payment_method} — ₹1,000</td>
             </tr>
           </table>
         </div>
 
         ${payment_method === 'Cash' 
           ? `<div style="margin-top:16px;padding:12px 16px;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:8px;">
-              <p style="color:#22c55e;font-size:12px;margin:0;">💰 Please pay ₹500 in cash at the venue during registration.</p>
+              <p style="color:#22c55e;font-size:12px;margin:0;">💰 Please pay ₹1,000 in cash at the venue during registration.</p>
             </div>` 
           : `<div style="margin-top:16px;padding:12px 16px;background:rgba(212,160,23,0.05);border:1px solid rgba(212,160,23,0.15);border-radius:8px;">
-              <p style="color:#d4a017;font-size:12px;margin:0;">📱 Online payment selected. Please ensure your UPI payment of ₹500 is completed.</p>
+              <p style="color:#d4a017;font-size:12px;margin:0;">📱 Online payment selected. Please ensure your UPI payment of ₹1,000 is completed.</p>
             </div>`
         }
       </div>
