@@ -210,7 +210,7 @@ const RegistrationForm = ({ onSuccess }) => {
 
           {/* Playing in 2026 */}
           <div>
-            <label className="input-label">Are you playing in 2026?</label>
+            <label className="input-label">Are you playing in 2025?</label>
             <div className="flex gap-3">
               {['Yes', 'No'].map((opt) => (
                 <button
@@ -219,9 +219,8 @@ const RegistrationForm = ({ onSuccess }) => {
                   className={`radio-card flex-1 justify-center ${form.playing_2025 === opt ? 'active' : ''}`}
                   onClick={() => handleChange('playing_2025', opt)}
                 >
-                  <span className={`w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${
-                    form.playing_2025 === opt ? 'border-gold bg-gold' : 'border-ash/40'
-                  }`}>
+                  <span className={`w-3.5 h-3.5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors ${form.playing_2025 === opt ? 'border-gold bg-gold' : 'border-ash/40'
+                    }`}>
                     {form.playing_2025 === opt && <span className="w-1.5 h-1.5 rounded-full bg-midnight" />}
                   </span>
                   <span className={`font-body text-sm ${form.playing_2025 === opt ? 'text-cream' : 'text-ash'}`}>
@@ -290,9 +289,8 @@ const RegistrationForm = ({ onSuccess }) => {
                   <span className={`transition-colors ${form.player_type === type.value ? 'text-gold' : 'text-ash/60'}`}>
                     {type.icon}
                   </span>
-                  <span className={`font-body text-[10px] sm:text-xs font-medium mt-1 ${
-                    form.player_type === type.value ? 'text-cream' : 'text-ash'
-                  }`}>
+                  <span className={`font-body text-[10px] sm:text-xs font-medium mt-1 ${form.player_type === type.value ? 'text-cream' : 'text-ash'
+                    }`}>
                     {type.label}
                   </span>
                 </button>
@@ -315,9 +313,8 @@ const RegistrationForm = ({ onSuccess }) => {
                   <span className={`transition-colors ${form.payment_method === pm.value ? 'text-gold' : 'text-ash/60'}`}>
                     {pm.icon}
                   </span>
-                  <span className={`font-body text-xs sm:text-sm font-medium mt-1 ${
-                    form.payment_method === pm.value ? 'text-cream' : 'text-ash'
-                  }`}>
+                  <span className={`font-body text-xs sm:text-sm font-medium mt-1 ${form.payment_method === pm.value ? 'text-cream' : 'text-ash'
+                    }`}>
                     {pm.label}
                   </span>
                   <span className="text-ash/50 text-[9px] sm:text-[10px] font-body">{pm.sub}</span>
