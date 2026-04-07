@@ -1,5 +1,7 @@
-const PaymentSection = ({ method }) => {
+const PaymentSection = ({ method, totalAmount }) => {
   if (!method) return null;
+
+  const displayAmount = totalAmount ? `₹${totalAmount.toLocaleString('en-IN')}` : '₹700';
 
   if (method === 'Cash') {
     return (
@@ -13,7 +15,7 @@ const PaymentSection = ({ method }) => {
             </div>
             <div>
               <p className="text-cream font-display font-semibold text-sm sm:text-base">Cash Payment Selected</p>
-              <p className="text-ash text-xs sm:text-sm mt-0.5">Pay <span className="text-gold font-accent text-base sm:text-lg">₹700</span> at the venue during registration</p>
+              <p className="text-ash text-xs sm:text-sm mt-0.5">Pay <span className="text-gold font-accent text-base sm:text-lg">{displayAmount}</span> at the venue during registration</p>
             </div>
           </div>
         </div>
@@ -28,7 +30,7 @@ const PaymentSection = ({ method }) => {
           {/* Amount Badge */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold/10 border border-gold/20 mb-4">
             <span className="text-ash text-xs font-body">Amount:</span>
-            <span className="text-gold font-accent text-xl sm:text-2xl">₹700</span>
+            <span className="text-gold font-accent text-xl sm:text-2xl">{displayAmount}</span>
           </div>
 
           {/* QR Code */}

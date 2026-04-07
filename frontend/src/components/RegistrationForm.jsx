@@ -354,12 +354,28 @@ const RegistrationForm = ({ onSuccess }) => {
           </div>
 
           {/* Payment Section */}
-          <PaymentSection method={form.payment_method} />
+          <PaymentSection method={form.payment_method} totalAmount={form.mandal_token_2026 === 'Yes' ? 2500 : 700} />
 
           {/* Registration Fee Info */}
-          <div className="flex items-center justify-between p-3 sm:p-4 rounded-xl bg-midnight-200/50 border border-midnight-300/30">
-            <span className="text-ash text-xs sm:text-sm font-body">Registration Fee</span>
-            <span className="text-gold font-accent text-xl sm:text-2xl">₹700</span>
+          <div className="p-3 sm:p-4 rounded-xl bg-midnight-200/50 border border-midnight-300/30 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-ash text-xs sm:text-sm font-body">GPL Registration Fee</span>
+              <span className="text-cream font-accent text-base sm:text-lg">
+                ₹{form.mandal_token_2026 === 'Yes' ? '500' : '700'}
+              </span>
+            </div>
+            {form.mandal_token_2026 === 'Yes' && (
+              <div className="flex items-center justify-between">
+                <span className="text-ash text-xs sm:text-sm font-body">Mandal Token Amount</span>
+                <span className="text-cream font-accent text-base sm:text-lg">₹2,000</span>
+              </div>
+            )}
+            <div className="border-t border-ash/10 pt-2 flex items-center justify-between">
+              <span className="text-cream text-xs sm:text-sm font-body font-semibold">Total</span>
+              <span className="text-gold font-accent text-xl sm:text-2xl">
+                ₹{form.mandal_token_2026 === 'Yes' ? '2,500' : '700'}
+              </span>
+            </div>
           </div>
 
           {/* Submit Error */}
