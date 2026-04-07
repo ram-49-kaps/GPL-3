@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import RegistrationForm from './components/RegistrationForm';
 import GallerySection from './components/GallerySection';
 import SuccessModal from './components/SuccessModal';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -23,6 +24,11 @@ function App() {
 
   if (showSplash) {
     return <SplashScreen onComplete={handleSplashComplete} />;
+  }
+
+  const currentPath = window.location.pathname;
+  if (currentPath === '/admin') {
+    return <AdminDashboard />;
   }
 
   return (
