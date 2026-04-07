@@ -1,7 +1,7 @@
 const PaymentSection = ({ method, totalAmount }) => {
   if (!method) return null;
 
-  const displayAmount = totalAmount ? `₹${totalAmount.toLocaleString('en-IN')}` : '₹700';
+  const displayAmount = totalAmount ? `₹${totalAmount.toLocaleString('en-IN')}` : '₹500';
 
   if (method === 'Cash') {
     return (
