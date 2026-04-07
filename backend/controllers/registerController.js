@@ -1,5 +1,7 @@
 const supabase = require('../config/supabase');
 const { sendConfirmationEmail } = require('../utils/emailService');
+const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 
 const registerPlayer = async (req, res) => {
   try {
@@ -28,7 +30,33 @@ const registerPlayer = async (req, res) => {
       return res.status(400).json({ message: 'Valid payment method is required' });
     }
 
-    const photo_path = req.file ? `/uploads/${req.file.filename}` : null;
+    let photo_path = null;
+
+    if (req.file && supabase) {
+      const fileExt = path.extname(req.file.originalname);
+      const fileName = `${Date.now()}-${uuidv4()}${fileExt}`;
+      const filePath = `uploads/${fileName}`;
+
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('Photos') // Updated to match user's bucket name
+        .upload(filePath, req.file.buffer, {
+          contentType: req.file.mimetype,
+          cacheControl: '3600',
+          upsert: false
+        });
+
+      if (uploadError) {
+        console.error('Supabase storage upload error:', uploadError);
+      } else {
+        const { data: publicUrlData } = supabase.storage
+          .from('Photos')
+          .getPublicUrl(filePath);
+          
+        photo_path = publicUrlData.publicUrl;
+      }
+    } else if (req.file) {
+      photo_path = `/uploads/${req.file.originalname}`;
+    }
 
     // Save to Supabase
     let dbRecord = null;
