@@ -147,7 +147,7 @@ const RegistrationForm = ({ onSuccess }) => {
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-10">
           <span className="inline-block px-3 py-1 rounded-full bg-gold/10 border border-gold/20 text-gold font-accent text-xs sm:text-sm tracking-wider mb-3">
-            REGISTRATION OPEN
+            OPEN FOR ALL
           </span>
           <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-gradient-gold">
             Register Now
