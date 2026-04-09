@@ -8,7 +8,8 @@ const AdminDashboard = () => {
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  const backendUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+  const rawUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+  const backendUrl = rawUrl.replace(/\/$/, '');
 
   const getInitials = (name) => {
     if (!name) return '?';
