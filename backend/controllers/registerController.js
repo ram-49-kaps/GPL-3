@@ -94,6 +94,7 @@ const registerPlayer = async (req, res) => {
       phone,
       player_type,
       payment_method,
+      mandal_token_2026,
     }).catch(err => console.error('🔥 Email Send Error:', err));
 
     // Response
