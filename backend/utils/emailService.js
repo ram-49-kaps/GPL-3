@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_method, mandal_token_2026 }) => {
   // Calculate correct fee based on Mandal Token status
-  const registrationFee = mandal_token_2026 === 'No' ? 2700 : 700;
+  const registrationFee = mandal_token_2026 === 'No' ? 2000 : 700;
   const formattedFee = `₹${registrationFee.toLocaleString('en-IN')}`;
   const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
@@ -64,14 +64,14 @@ const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_
           </table>
         </div>
 
-        ${payment_method === 'Cash' 
-          ? `<div style="margin-top:16px;padding:12px 16px;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:8px;">
+        ${payment_method === 'Cash'
+      ? `<div style="margin-top:16px;padding:12px 16px;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:8px;">
               <p style="color:#22c55e;font-size:12px;margin:0;">💰 Please pay ${formattedFee} in cash at the venue during registration.</p>
-            </div>` 
-          : `<div style="margin-top:16px;padding:12px 16px;background:rgba(212,160,23,0.05);border:1px solid rgba(212,160,23,0.15);border-radius:8px;">
+            </div>`
+      : `<div style="margin-top:16px;padding:12px 16px;background:rgba(212,160,23,0.05);border:1px solid rgba(212,160,23,0.15);border-radius:8px;">
               <p style="color:#d4a017;font-size:12px;margin:0;">📱 Online payment selected. Please ensure your UPI payment of ${formattedFee} is completed.</p>
             </div>`
-        }
+    }
       </div>
 
       <!-- Footer -->
