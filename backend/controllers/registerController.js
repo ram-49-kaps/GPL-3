@@ -29,6 +29,9 @@ const registerPlayer = async (req, res) => {
     if (!['Cash', 'Online'].includes(payment_method)) {
       return res.status(400).json({ message: 'Valid payment method is required' });
     }
+    if (!req.file) {
+      return res.status(400).json({ message: 'A recent photo is required' });
+    }
 
     let photo_path = null;
 

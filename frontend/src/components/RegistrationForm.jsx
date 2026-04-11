@@ -42,6 +42,9 @@ const RegistrationForm = ({ onSuccess }) => {
     if (!form.payment_method) {
       newErrors.payment_method = 'Please select payment method';
     }
+    if (!form.photo) {
+      newErrors.photo = 'Please upload a recent photo';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
