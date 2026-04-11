@@ -267,7 +267,7 @@ const RegistrationForm = ({ onSuccess }) => {
           <div>
             <label className="input-label">Upload Recent Photo</label>
             <div
-              className={`upload-zone ${photoPreview ? 'has-file' : ''}`}
+              className={`upload-zone ${photoPreview ? 'has-file' : ''} ${errors.photo ? 'border-crimson bg-crimson/5' : ''}`}
               onClick={() => fileInputRef.current?.click()}
             >
               <input
