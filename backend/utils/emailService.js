@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const sendConfirmationEmail = async ({ name, email, phone, player_type, payment_method, mandal_token_2026 }) => {
   // Calculate correct fee based on Mandal Token status
-  const registrationFee = mandal_token_2026 === 'No' ? 2000 : 700;
+  const registrationFee = mandal_token_2026 === 'No' ? 2700 : 700;
   const formattedFee = `₹${registrationFee.toLocaleString('en-IN')}`;
   const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
