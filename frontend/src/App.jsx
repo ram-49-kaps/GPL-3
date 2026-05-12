@@ -3,23 +3,13 @@ import SplashScreen from './components/SplashScreen';
 import Navbar from './components/Navbar';
 import RegistrationForm from './components/RegistrationForm';
 import GallerySection from './components/GallerySection';
-import SuccessModal from './components/SuccessModal';
 import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const [successData, setSuccessData] = useState(null);
 
   const handleSplashComplete = useCallback(() => {
     setShowSplash(false);
-  }, []);
-
-  const handleSuccess = useCallback((data) => {
-    setSuccessData(data);
-  }, []);
-
-  const handleCloseModal = useCallback(() => {
-    setSuccessData(null);
   }, []);
 
   if (showSplash) {
@@ -84,17 +74,14 @@ function App() {
               Box Cricket Tournament • Registration 2026
             </p>
 
-            {/* CTA Badge */}
+            {/* Registration Closed Badge */}
             <div className="mt-5 sm:mt-6 animate-slide-up animation-delay-600">
-              <a
-                href="#register"
-                className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gold/10 border border-gold/30 text-gold font-display font-semibold text-xs sm:text-sm tracking-wide hover:bg-gold/20 hover:border-gold/50 transition-all duration-300 group"
-              >
-                <span>Register Now</span>
-                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-crimson/10 border border-crimson/30 text-crimson font-display font-semibold text-xs sm:text-sm tracking-wide">
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                 </svg>
-              </a>
+                <span>Registration Closed — Seats Full</span>
+              </span>
             </div>
           </div>
         </section>
@@ -102,8 +89,8 @@ function App() {
         {/* Divider */}
         <div className="section-divider max-w-2xl mx-auto" />
 
-        {/* Registration Form */}
-        <RegistrationForm onSuccess={handleSuccess} />
+        {/* Registration Closed */}
+        <RegistrationForm />
 
         {/* Divider */}
         <div className="section-divider max-w-2xl mx-auto" />
@@ -135,8 +122,6 @@ function App() {
         </footer>
       </main>
 
-      {/* Success Modal */}
-      {successData && <SuccessModal data={successData} onClose={handleCloseModal} />}
     </div>
   );
 }
